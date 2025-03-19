@@ -11,7 +11,8 @@ import { Link } from "react-router-dom";
 import { formatter } from "../../../../utils/formater";
 const Header = () =>{
     return (
-    <div className="header__top">
+        <>
+            <div className="header__top">
         <div className="container">
             <div className="row">
                 <div className="col-6 header__top_left">
@@ -55,10 +56,17 @@ const Header = () =>{
                 </div>
             </div>
         </div>
-    </div>
-    );
-    
-    
+            </div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-xl-3">LOGO</div>
+                    <div className="col-xl-6">MENU</div>
+                    <div className="col-xl-3">PHONE</div>
+                </div>
+            </div>
+           
+        </>
+    );  
 };
 
 export default memo(Header);
