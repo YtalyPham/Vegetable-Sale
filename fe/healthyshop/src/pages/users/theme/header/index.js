@@ -6,13 +6,15 @@ import {AiOutlineFacebook,
     AiOutlineTwitter,
     AiOutlineUser,
     AiOutlineMail,
-    AiOutlineShoppingCart
+    AiOutlineShoppingCart,
+    AiOutlineMenu
 } from "react-icons/ai"
 import { Link } from "react-router-dom";
 import { formatter } from "../../../../utils/formater";
 import { ROUTERS } from "../../../../utils/router";
 const Header = () =>{
-    const [menus, setMenus] = useState([
+    const [isShowCategories, setisShowCategories] = useState(true);
+    const [menus] = useState([
         {
             name: "Trang chủ",
             path: ROUTERS.USER.HOME,
@@ -149,7 +151,39 @@ const Header = () =>{
                     </div>
                 </div>
             </div>
-           
+            <div className="container">
+                <div className="row hero__categories__container">
+                    <div className="col-lg-3 hero__categories">
+                        <div className="hero__categories__all" onClick={() => setisShowCategories(!isShowCategories)}>
+                            <AiOutlineMenu/>
+                            Danh sach san pham
+                        </div>
+                        {isShowCategories &&(
+                              <ul className={isShowCategories ? "" : "hidden"}>
+                                <li>
+                                    <Link to={"#"}>Thịt tươi</Link>
+                                </li>
+                                <li>
+                                    <Link to={"#"}>Rau củ</Link>
+                                </li>
+                                <li>
+                                    <Link to={"#"}>Nước trái cây</Link>
+                                </li>
+                                <li>
+                                    <Link to={"#"}>Trái cây</Link>
+                                </li>
+                                <li>
+                                    <Link to={"#"}>Hải sản</Link>
+                                </li>
+                          </ul>
+                        )}
+                      
+                    </div>
+                    <div className="col-lg-9">
+                        Phai
+                    </div>
+                </div>
+            </div>
         </>
     );  
 };
