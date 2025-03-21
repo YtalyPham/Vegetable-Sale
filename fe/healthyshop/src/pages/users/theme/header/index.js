@@ -7,7 +7,8 @@ import {AiOutlineFacebook,
     AiOutlineUser,
     AiOutlineMail,
     AiOutlineShoppingCart,
-    AiOutlineMenu
+    AiOutlineMenu,
+    AiOutlinePhone
 } from "react-icons/ai"
 import { Link } from "react-router-dom";
 import { formatter } from "../../../../utils/formater";
@@ -179,8 +180,35 @@ const Header = () =>{
                         )}
                       
                     </div>
-                    <div className="col-lg-9">
-                        Phai
+                    <div className="col-lg-9 hero___search__container">
+                        <div className="hero__search">
+                            <div className="hero__search__form">
+                                <form>
+                                    <input type="text" placeholder="Bạn đang tìm gì ?" name="" value=""/>
+                                    <button type="submit" >Tìm kiếm</button>
+                                </form>
+                            </div>
+                            <div className="hero__search__phone">
+                                <div className="hero__search__phone__icon">
+                                    <AiOutlinePhone/>
+                                </div>
+                                <div className="hero__search__phone__text">
+                                    <p>0907 999 888</p>
+                                    <span>Hỗ trợ 24/7</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="hero__item">
+                            <div className="hero__text">
+                                <span>Trái cây tươi</span>
+                                <h2>Rau quả <br/>
+                                    sạch 100%</h2>
+                                <p>Miễn phí giao hàng tận nơi</p>
+                                <Link to="" className="primary-btn">
+                                    Mua ngay
+                                </Link>    
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
