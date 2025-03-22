@@ -1,11 +1,14 @@
 import { memo } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 import c1 from "assets/users/images/categories/c1.jpg";
 import c2 from "assets/users/images/categories/c2.jpg";
 import c3 from "assets/users/images/categories/c3.jpg";
 import c4 from "assets/users/images/categories/c4.jpg";
 import c5 from "assets/users/images/categories/c5.jpg";
+import f1 from "assets/users/images/featured/f1.jpg";
 import "./style.scss";
 const HomePages = () => {
   const responsive = {
@@ -50,6 +53,64 @@ const HomePages = () => {
     },
   ];
 
+  const featproducts = {
+    all: {
+      title: "Toàn bộ",
+      products: [
+        {
+          img: f1,
+          name: "Thịt bò nạt",
+          price: 20000,
+        },
+      ],
+    },
+    freshMeat: {
+      title: "Thịt tươi",
+      products: [
+        {
+          img: f1,
+          name: "Thịt tươi nè",
+          price: 20000,
+        },
+      ],
+    },
+  };
+  const renderFeaturedProducts = (data) => {
+    const tabList =[];
+    const tabPanels=[];
+    
+
+    Object.keys(data).forEach((key,index)=>{
+      tabList.push(<Tab key={index}>{data[key].title}</Tab>);
+      const tabPanel=[];
+      data[key].products.forEach((item, j)=>{
+        tabPanel.push(
+          <div key={key}>{item.name}</div>
+        )
+      })
+      tabPanels.push(tabPanel);
+    }); 
+
+   
+
+    return (
+      <Tabs>
+        <TabList>
+          {tabList}
+        </TabList>
+        {
+          tabPanels.map((item,key)=>(
+            <TabPanel key={key}>
+            <div className="row">
+              {item}
+            </div>
+          </TabPanel>
+          ))
+        }
+       
+      </Tabs>
+    );
+  };
   return (
     <>
       {/*Categories Begin*/}
@@ -70,6 +131,16 @@ const HomePages = () => {
         </Carousel>
       </div>
       {/*Categories End*/}
+      {/* Featured Begin*/}
+      <div className="container">
+        <div className="featured">
+          <div className="section-title">
+            <h2>Sản phẩm nổi bật</h2>
+          </div>
+          {renderFeaturedProducts(featproducts)}
+        </div>
+      </div>
+      {/*Featured End */}
     </>
   );
 };
