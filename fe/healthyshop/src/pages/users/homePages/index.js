@@ -1,15 +1,27 @@
 import { memo } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 import c1 from "assets/users/images/categories/c1.jpg";
 import c2 from "assets/users/images/categories/c2.jpg";
 import c3 from "assets/users/images/categories/c3.jpg";
 import c4 from "assets/users/images/categories/c4.jpg";
 import c5 from "assets/users/images/categories/c5.jpg";
 import f1 from "assets/users/images/featured/f1.jpg";
+import f2 from "assets/users/images/featured/f2.jpg";
+import f3 from "assets/users/images/featured/f3.jpg";
+import f4 from "assets/users/images/featured/f4.jpg";
+import f5 from "assets/users/images/featured/f5.jpg";
+import f6 from "assets/users/images/featured/f6.jpg";
+import f7 from "assets/users/images/featured/f7.jpg";
+import f8 from "assets/users/images/featured/f8.jpg";
+import banner1 from "assets/users/images/banner/banner1.jpg";
+import banner2 from "assets/users/images/banner/banner2.jpg";
 import "./style.scss";
+import { AiOutlineEye, AiOutlineShoppingCart } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { formatter } from "../../../utils/formater.js";
 const HomePages = () => {
   const responsive = {
     superLargeDesktop: {
@@ -62,6 +74,41 @@ const HomePages = () => {
           name: "Thịt bò nạt",
           price: 20000,
         },
+        {
+          img: f2,
+          name: "Chuối",
+          price: 17800,
+        },
+        {
+          img: f3,
+          name: "Ổi",
+          price: 25000,
+        },
+        {
+          img: f4,
+          name: "Dưa hấu",
+          price: 44000,
+        },
+        {
+          img: f5,
+          name: "Nho tím",
+          price: 120000,
+        },
+        {
+          img: f6,
+          name: "Hamburger",
+          price: 86000,
+        },
+        {
+          img: f7,
+          name: "Xoài",
+          price: 69000,
+        },
+        {
+          img: f8,
+          name: "Táo Úc",
+          price: 53000,
+        },
       ],
     },
     freshMeat: {
@@ -74,40 +121,99 @@ const HomePages = () => {
         },
       ],
     },
+    fruits: {
+      title: "Trái cây",
+      products: [
+        {
+          img: f2,
+          name: "Chuối",
+          price: 17800,
+        },
+        {
+          img: f3,
+          name: "Ổi",
+          price: 25000,
+        },
+        {
+          img: f4,
+          name: "Dưa hấu",
+          price: 44000,
+        },
+        {
+          img: f5,
+          name: "Nho tím",
+          price: 120000,
+        },
+        {
+          img: f7,
+          name: "Xoài",
+          price: 69000,
+        },
+        {
+          img: f8,
+          name: "Táo Úc",
+          price: 53000,
+        },
+      ],
+    },
+    fastfood: {
+      title: "Thức ăn nhanh",
+      products: [
+        {
+          img: f6,
+          name: "Hamburger",
+          price: 86000,
+        },
+      ],
+    },
   };
   const renderFeaturedProducts = (data) => {
-    const tabList =[];
-    const tabPanels=[];
-    
+    const tabList = [];
+    const tabPanels = [];
 
-    Object.keys(data).forEach((key,index)=>{
+    Object.keys(data).forEach((key, index) => {
       tabList.push(<Tab key={index}>{data[key].title}</Tab>);
-      const tabPanel=[];
-      data[key].products.forEach((item, j)=>{
+      const tabPanel = [];
+      data[key].products.forEach((item, j) => {
         tabPanel.push(
-          <div key={key}>{item.name}</div>
-        )
-      })
+          <div key={key} className="col-lg-3">
+            <div className="featured__item">
+              <div
+                className="featured__item__pic"
+                style={{
+                  backgroundImage: `url(${item.img})`,
+                }}
+              >
+                <ul className="featured__item__pic__hover">
+                  <li>
+                    <AiOutlineEye />
+                  </li>
+                  <li>
+                    <AiOutlineShoppingCart />
+                  </li>
+                </ul>
+              </div>
+              <div className="featured__item__text">
+                <h6>
+                  <Link to="">{item.name}</Link>
+                </h6>
+                <h5>{formatter(item.price)}</h5>
+              </div>
+            </div>
+          </div>
+        );
+      });
       tabPanels.push(tabPanel);
-    }); 
-
-   
+    });
 
     return (
       <Tabs>
-        <TabList>
-          {tabList}
-        </TabList>
-        {
-          tabPanels.map((item,key)=>(
-            <TabPanel key={key}>
-            <div className="row">
-              {item}
-            </div>
+        <TabList>{tabList}</TabList>
+        {tabPanels.map((item, key) => (
+          <TabPanel key={key}>
+            <div className="row">{item}</div>
           </TabPanel>
-          ))
-        }
-       
+        ))}
       </Tabs>
     );
   };
@@ -141,6 +247,19 @@ const HomePages = () => {
         </div>
       </div>
       {/*Featured End */}
+      {/*Banner Begin */}
+          <div className="container">
+            <div className="banner">
+              <div className="banner_pic">
+                <img src={banner1} alt="banner" />
+              </div>
+              <div className="banner_pic">
+                <img src={banner2} alt="banner" />
+              </div>
+            </div>
+          </div>
+          
+      {/*Banner End */}
     </>
   );
 };
