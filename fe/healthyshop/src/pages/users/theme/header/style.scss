@@ -336,6 +336,10 @@ $bannerImg: "/assets/users/images/hero/vegetablebanner.jpg";
     }
    
 }
+.humberger__menu__wrapper{
+    display: none;
+}
+
 @include Responsive($TABLET_DEVICE){
     .header__top,
     .header__menu,
@@ -385,6 +389,131 @@ $bannerImg: "/assets/users/images/hero/vegetablebanner.jpg";
 
         &.active{
             visibility: visible !important;
+        }
+    }
+
+    .humberger__menu__cart{
+        display: flex;
+        margin-bottom: 25px;
+
+        .header__cart__price{
+            font-size: 14px;
+            color: #6f6f6f;
+
+            span{
+                color: map.get($theme-colors,"bold-text");
+                font-weight: 700;
+            }
+        }
+
+        ul{
+            list-style: none;
+            display: inline-block;
+            margin-right: 15px;
+
+            li:last-child{
+                margin-right: 0;
+            }
+
+            li{
+                position: relative;
+                a{
+                    font-size: 18px;
+                    color: map.get($theme-colors,"normal-text");
+
+                    span{
+                        color: white;
+                        background: map.get($theme-colors,"main");
+                        height: 20px;
+                        left: 10px;
+                        top: -10px;
+                        border-radius: 40px;
+                        display: inline-block;
+                        text-align: center;
+                        line-height: 20px;
+                        font-size: 13px;
+                        position: absolute;
+                        padding: 0px 7px;
+                        font-weight: 500;
+            
+                    }
+                }
+            }
+        }
+    }
+    .humberger__menu__widget{
+        margin-bottom: 20px;
+
+        .header__top__right__auth a{
+            display: block;
+            font-size: 14px;
+            color: map.get($theme-colors,"normal-text");
+            text-decoration: none;
+        }
+    }
+    .humberger__menu__nav{
+        margin-bottom: 20px;
+
+        ul{
+            list-style: none;
+
+            li{
+                padding: 8px 0;
+                border-bottom: 1px solid #e1e1e1;
+                a{
+                    color: map.get($theme-colors,"normal-text");
+                    font-size: 16px;
+                    font-weight: 500;
+                    text-decoration: none;
+                    
+                    svg{
+                        vertical-align: middle;
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+        .header__menu__dropdown{
+            display: none;
+            padding: 5px 0;
+
+            li{
+                margin-left: 10px;
+                display: block;
+                margin-right: 0;
+
+                &:last-child{
+                    border-bottom: unset;
+                }
+            }
+        }
+        .show__submenu{
+             display: block;   
+        }
+    }
+    .humberger__top__right__social{
+        display: block;
+        margin-right: 0;
+        margin-bottom: 20px;
+
+        a{
+            font-size: 14px;
+            display: inline-block;
+            color: map.get($theme-colors,"normal-text");
+            margin-right: 25px;
+
+            svg{
+                font-size: 20px;
+            }
+        }
+    }
+
+    .humberger__menu__contact{
+        ul li{
+            font-size: 14px;
+            display: inline-block;
+            color: map.get($theme-colors,"normal-text");
+            margin-bottom: 10px;
         }
     }
 }
