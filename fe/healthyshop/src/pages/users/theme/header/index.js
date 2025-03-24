@@ -10,6 +10,8 @@ import {
   AiOutlineShoppingCart,
   AiOutlineMenu,
   AiOutlinePhone,
+  AiOutlineDownCircle,
+  AiOutlineUpCircle,
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { formatter } from "../../../../utils/formater";
@@ -17,7 +19,7 @@ import { ROUTERS } from "../../../../utils/router";
 const Header = () => {
   const [isShowCategories, setisShowCategories] = useState(true);
   const [isShowHumberger, setisShowHumberger] = useState(false);
-  const [menus] = useState([
+  const [menus,setMenus] = useState([
     {
       name: "Trang chủ",
       path: ROUTERS.USER.HOME,
@@ -56,16 +58,19 @@ const Header = () => {
   ]);
   return (
     <>
-        <div className={`humberger__menu__overlay ${isShowHumberger ? "active" : ""}`}
-            onClick={()=> setisShowHumberger(false)}
-        >
-
-        </div>
-      <div className={`humberger__menu__wrapper ${isShowHumberger ? "show" : ""}`}>
+      <div
+        className={`humberger__menu__overlay ${
+          isShowHumberger ? "active" : ""
+        }`}
+        onClick={() => setisShowHumberger(false)}
+      ></div>
+      <div
+        className={`humberger__menu__wrapper ${isShowHumberger ? "show" : ""}`}
+      >
         <div className="header__logo">
           <h1>Healthy SHOP</h1>
         </div>
-        <div className="header__menu__cart">
+        <div className="humberger__menu__cart">
           <ul>
             <li>
               <Link to={""}>
@@ -78,7 +83,7 @@ const Header = () => {
           </div>
         </div>
         <div className="humberger__menu__widget">
-          <div className="humberger__top__right__auth">
+          <div className="header__top__right__auth">
             <Link to={""}>
               <AiOutlineUser /> Đăng nhập
             </Link>
@@ -86,7 +91,38 @@ const Header = () => {
         </div>
         <div className="humberger__menu__nav">
           <ul>
-            <li>Menu Item</li>
+            {menus.map((menu, menuKey) => (
+              <li key={menuKey} to={menu.path}>
+                <Link
+                  to={menu.path}
+                  onClick={()=>{
+                    const newMenus=[...menus];
+                    newMenus[menuKey].isShowSubmenu = !newMenus[menuKey].isShowSubmenu;
+                    setMenus(newMenus);
+                  }}
+                
+                >
+                  {menu.name}
+                  {menu.child &&
+                    (menu.isShowSubmenu ? (
+                      <AiOutlineDownCircle />
+                    ) : (
+                      <AiOutlineUpCircle />
+                    ))}
+                </Link>
+                {menu.child && (
+                  <ul className={`header__menu__dropdown ${menu.isShowSubmenu 
+                    ? "show__submenu" : ""}`}>
+                    {menu.child.map((childItem, childKey) => (
+                      <li key={`${menuKey}-${childKey}`}>
+                        <Link to={childItem.path}></Link>
+                        {childItem.name}13546
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
         <div className="humberger__top__right__social">
@@ -109,7 +145,7 @@ const Header = () => {
         <div className="humberger__menu__contact">
           <ul>
             <li>
-              <i className="fa fa-evelope" /> HealthyShop@gmail.com
+              <AiOutlineMail/> HealthyShop@gmail.com
             </li>
             <li>Miễn phí đơn từ {formatter(200000)}</li>
           </ul>
@@ -202,9 +238,7 @@ const Header = () => {
               </ul>
             </div>
             <div className="humberger__open">
-              <AiOutlineMenu
-                onClick={() => setisShowHumberger(true)}
-              />
+              <AiOutlineMenu onClick={() => setisShowHumberger(true)} />
             </div>
           </div>
         </div>
