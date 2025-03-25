@@ -176,8 +176,8 @@ const HomePages = () => {
       const tabPanel = [];
       data[key].products.forEach((item, j) => {
         tabPanel.push(
-          <div key={key} className="col-lg-3">
-            <div className="featured__item">
+          <div key={key} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div className="featured__item pl-r-10">
               <div
                 className="featured__item__pic"
                 style={{

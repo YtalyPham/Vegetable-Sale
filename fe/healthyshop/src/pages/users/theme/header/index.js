@@ -245,7 +245,7 @@ const Header = () => {
       </div>
       <div className="container">
         <div className="row hero__categories__container">
-          <div className="col-lg-3 hero__categories">
+          <div className="col-lg-3 col-sm-12 col-xs-12 col-md-12 hero__categories">
             <div
               className="hero__categories__all"
               onClick={() => setisShowCategories(!isShowCategories)}
@@ -273,7 +273,7 @@ const Header = () => {
               </ul>
             )}
           </div>
-          <div className="col-lg-9 hero___search__container">
+          <div className="col-lg-9 col-sm-12 col-xs-12 col-md-12 hero___search__container">
             <div className="hero__search">
               <div className="hero__search__form">
                 <form>
@@ -291,7 +291,7 @@ const Header = () => {
                   <AiOutlinePhone />
                 </div>
                 <div className="hero__search__phone__text">
-                  <p>0907 999 888</p>
+                  <p>0907.999.888</p>
                   <span>Hỗ trợ 24/7</span>
                 </div>
               </div>
