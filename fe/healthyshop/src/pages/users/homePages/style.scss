@@ -1,11 +1,12 @@
 @use "sass:map";
-@import "style/pages/_all.scss";
+@import "style/pages/all";
 
 .container__categories__slider{
     max-width: 1200px !important;
     margin-top: 30px !important;
 
     .categories__slider{
+        padding-left: 0;
         .categories__slider__item{
             height: 300px;
             position: relative;
@@ -162,9 +163,30 @@
     display: flex;
     gap: 20px;
     margin-bottom: 30px;
+    @include Responsive($WIDE_MOBILE){
+        flex-direction: column;
+    }
+    
     img{
         width: 100%;
     }
 }
 
+@include Responsive($MEDIUM_DEVICE){
+    .container{
+        width: 990px !important;
+        
+    }
+}
+@include Responsive($TABLET_DEVICE){
+    .container{
+        width: 750px !important;
 
+    }
+}
+@include Responsive($WIDE_MOBILE){
+    .container{
+        width: 540px !important;
+
+    }
+}
