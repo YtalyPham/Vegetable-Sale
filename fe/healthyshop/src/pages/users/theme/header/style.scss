@@ -369,7 +369,6 @@ $bannerImg: "/assets/users/images/hero/vegetablebanner.jpg";
 @include Responsive($WIDE_MOBILE) {
   .hero__search__form {
     width: 563px !important;
-    background: red;
   }
 }
 @include Responsive($SMALL_DEVICES) {

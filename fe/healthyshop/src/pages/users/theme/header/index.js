@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import "./style.scss";
 import {
   AiOutlineFacebook,
@@ -13,13 +13,15 @@ import {
   AiOutlineDownCircle,
   AiOutlineUpCircle,
 } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { formatter } from "../../../../utils/formater";
 import { ROUTERS } from "../../../../utils/router";
 const Header = () => {
-  const [isShowCategories, setisShowCategories] = useState(true);
+  const location= useLocation();
   const [isShowHumberger, setisShowHumberger] = useState(false);
-  const [menus,setMenus] = useState([
+  const [isHome, setisHome] = useState(location.pathname.length <= 1);
+  const [isShowCategories, setisShowCategories] = useState(isHome);
+  const [menus, setMenus] = useState([
     {
       name: "Trang chủ",
       path: ROUTERS.USER.HOME,
@@ -56,6 +58,18 @@ const Header = () => {
       path: "",
     },
   ]);
+  const categories = [
+    "Thịt tươi",
+    "Rau củ",
+    "Nước trái cây",
+    "Trái cây",
+    "Hải sản",
+  ];
+  useEffect(()=>{
+    const isHome = location.pathname.length <= 1;
+    setisHome(isHome);
+    setisShowCategories(isHome);
+  },[location]);
   return (
     <>
       <div
@@ -95,12 +109,12 @@ const Header = () => {
               <li key={menuKey} to={menu.path}>
                 <Link
                   to={menu.path}
-                  onClick={()=>{
-                    const newMenus=[...menus];
-                    newMenus[menuKey].isShowSubmenu = !newMenus[menuKey].isShowSubmenu;
+                  onClick={() => {
+                    const newMenus = [...menus];
+                    newMenus[menuKey].isShowSubmenu =
+                      !newMenus[menuKey].isShowSubmenu;
                     setMenus(newMenus);
                   }}
-                
                 >
                   {menu.name}
                   {menu.child &&
@@ -111,8 +125,11 @@ const Header = () => {
                     ))}
                 </Link>
                 {menu.child && (
-                  <ul className={`header__menu__dropdown ${menu.isShowSubmenu 
-                    ? "show__submenu" : ""}`}>
+                  <ul
+                    className={`header__menu__dropdown ${
+                      menu.isShowSubmenu ? "show__submenu" : ""
+                    }`}
+                  >
                     {menu.child.map((childItem, childKey) => (
                       <li key={`${menuKey}-${childKey}`}>
                         <Link to={childItem.path}></Link>
@@ -145,7 +162,7 @@ const Header = () => {
         <div className="humberger__menu__contact">
           <ul>
             <li>
-              <AiOutlineMail/> HealthyShop@gmail.com
+              <AiOutlineMail /> HealthyShop@gmail.com
             </li>
             <li>Miễn phí đơn từ {formatter(200000)}</li>
           </ul>
@@ -251,25 +268,15 @@ const Header = () => {
               onClick={() => setisShowCategories(!isShowCategories)}
             >
               <AiOutlineMenu />
-              Danh sach san pham
+              Danh sách sản phẩm
             </div>
             {isShowCategories && (
               <ul className={isShowCategories ? "" : "hidden"}>
-                <li>
-                  <Link to={"#"}>Thịt tươi</Link>
-                </li>
-                <li>
-                  <Link to={"#"}>Rau củ</Link>
-                </li>
-                <li>
-                  <Link to={"#"}>Nước trái cây</Link>
-                </li>
-                <li>
-                  <Link to={"#"}>Trái cây</Link>
-                </li>
-                <li>
-                  <Link to={"#"}>Hải sản</Link>
-                </li>
+                {categories.map((categories, key) => (
+                  <li key={key}>
+                    <Link to={ROUTERS.USER.PRODUCTS}>{categories}</Link>
+                  </li>
+                ))}
               </ul>
             )}
           </div>
@@ -296,19 +303,21 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            <div className="hero__item">
-              <div className="hero__text">
-                <span>Trái cây tươi</span>
-                <h2>
-                  Rau quả <br />
-                  sạch 100%
-                </h2>
-                <p>Miễn phí giao hàng tận nơi</p>
-                <Link to="" className="primary-btn">
-                  Mua ngay
-                </Link>
+            {isHome && (
+              <div className="hero__item">
+                <div className="hero__text">
+                  <span>Trái cây tươi</span>
+                  <h2>
+                    Rau quả <br />
+                    sạch 100%
+                  </h2>
+                  <p>Miễn phí giao hàng tận nơi</p>
+                  <Link to="" className="primary-btn">
+                    Mua ngay
+                  </Link>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
