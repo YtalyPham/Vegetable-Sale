@@ -16,6 +16,13 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { formatter } from "../../../../utils/formater";
 import { ROUTERS } from "../../../../utils/router";
+export const categories = [
+  "Thịt tươi",
+  "Rau củ",
+  "Nước trái cây",
+  "Trái cây",
+  "Hải sản",
+];
 const Header = () => {
   const location= useLocation();
   const [isShowHumberger, setisShowHumberger] = useState(false);
@@ -58,13 +65,7 @@ const Header = () => {
       path: "",
     },
   ]);
-  const categories = [
-    "Thịt tươi",
-    "Rau củ",
-    "Nước trái cây",
-    "Trái cây",
-    "Hải sản",
-  ];
+ 
   useEffect(()=>{
     const isHome = location.pathname.length <= 1;
     setisHome(isHome);
