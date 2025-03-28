@@ -1,60 +1,71 @@
 @use "sass:map";
 @import "style/pages/theme";
-.container{
-    padding: 30px 0;
+.product__detail__pic {
+  display: flex;
+  column-gap: 10px;
 
-    .sidebar{
-        padding-right: 20px;
+  img {
+    flex: 0 0 65%;
+    object-fit: cover;
+  }
 
-        .sidebar__item{
-            margin-bottom: 20px;
-            h2{
-                color: rgb(28, 28, 28);
-                font-weight: 700;
-                margin-bottom: 10px;
+  .main {
+    flex: 0 0 35%;
+    display: grid;
+    align-items: stretch;
+
+    img {
+      width: 60%;
+      object-fit: cover;
+
+      &:not(:first-child) {
+        padding-top: 5px;
+      }
+    }
+  }
+}
+.product__detail__text{
+    h2{
+        color: #252525;
+        font-weight: 700;
+    }
+    .seen-icon{
+        display: flex;
+        align-items: center;
+        font-size: 13px;
+        line-height: 30px;
+        column-gap: 5px;
+    }
+    p{
+        margin: 10px 0;
+        line-height: 25px;
+
+    }
+    ul{
+        margin: 20px 0;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+
+        li{
+            list-style: none;
+            display: flex;
+            column-gap: 20px;
+            line-height: 35px;
+
+            b{
+                width: 150px;
             }
 
-            .price-range-wrap{
+            span{
                 display: flex;
-                flex-direction: column;
-                row-gap: 10px;
-            }
+                column-gap: 20px;
+                align-items: center;
 
-            .tags{
-                display: flex;
-                gap: 10px;
-                flex-wrap: wrap;
-
-                .tag{
-                    font-size: 12px;
-                    color: #6f6f6f;
-                    display: inline-block;
-                    padding: 8px 25px 6px;
+                svg{
+                    font-size: 20px;
                     cursor: pointer;
-                    background: #f5f5f5;
-                    margin-bottom: 0;
-
-                    &:hover, &:active{
-                        color: map.get($theme-colors,"main");
-                        
-                        // color: #ffffff;
-                    }
                 }
             }
-            ul li{
-                list-style: none;
-                a{
-                    text-decoration: none;
-                    line-height: 30px;
-                    color: map.get($theme-colors,"normal-text");
-
-                    &:hover{
-                        color: map.get($theme-colors,"main");
-
-                    }
-                }
-            }
-
         }
     }
 }
