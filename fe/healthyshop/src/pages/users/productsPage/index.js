@@ -4,7 +4,15 @@ import Breadcrumb from "../theme/breadcrumb";
 import { Link } from "react-router-dom";
 import { categories } from "../theme/header";
 import { ROUTERS } from "../../../utils/router";
-
+import f1 from "assets/users/images/featured/f1.jpg";
+import f2 from "assets/users/images/featured/f2.jpg";
+import f3 from "assets/users/images/featured/f3.jpg";
+import f4 from "assets/users/images/featured/f4.jpg";
+import f5 from "assets/users/images/featured/f5.jpg";
+import f6 from "assets/users/images/featured/f6.jpg";
+import f7 from "assets/users/images/featured/f7.jpg";
+import f8 from "assets/users/images/featured/f8.jpg";
+import { ProductCard } from "../../../component";
 const ProductsPage = () => {
   const sorts = [
     "Giá thấp đến cao",
@@ -13,6 +21,49 @@ const ProductsPage = () => {
     "Cũ đến mới",
     "Bán chạy nhất",
     "Đang giảm giá",
+  ];
+
+  const products = [
+    {
+      img: f1,
+      name: "Thịt bò nạt",
+      price: "20000",
+    },
+    {
+      img: f2,
+      name: "Chuối",
+      price: "17800",
+    },
+    {
+      img: f3,
+      name: "Ổi",
+      price: "25000",
+    },
+    {
+      img: f4,
+      name: "Dưa hấu",
+      price: "44000",
+    },
+    {
+      img: f5,
+      name: "Nho tím",
+      price: "120000",
+    },
+    {
+      img: f6,
+      name: "Hamburger",
+      price: "86000",
+    },
+    {
+      img: f7,
+      name: "Xoài",
+      price: "69000",
+    },
+    {
+      img: f8,
+      name: "Táo Úc",
+      price: "53000",
+    },
   ];
 
   return (
@@ -66,7 +117,19 @@ const ProductsPage = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-9">Danh sách</div>
+          <div className="col-lg-9">
+            <div className="row">
+              {products.map((item, key) => (
+                <div key={key} className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <ProductCard
+                    name={item.name}
+                    price={item.price}
+                    img={item.img}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </>

@@ -19,9 +19,10 @@ import f8 from "assets/users/images/featured/f8.jpg";
 import banner1 from "assets/users/images/banner/banner1.jpg";
 import banner2 from "assets/users/images/banner/banner2.jpg";
 import "./style.scss";
-import { AiOutlineEye, AiOutlineShoppingCart } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import { formatter } from "../../../utils/formater.js";
+
+
+import {ProductCard} from "../../../component";
+
 const HomePages = () => {
   const responsive = {
     superLargeDesktop: {
@@ -176,30 +177,8 @@ const HomePages = () => {
       const tabPanel = [];
       data[key].products.forEach((item, j) => {
         tabPanel.push(
-          <div key={key} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div className="featured__item pl-r-10">
-              <div
-                className="featured__item__pic"
-                style={{
-                  backgroundImage: `url(${item.img})`,
-                }}
-              >
-                <ul className="featured__item__pic__hover">
-                  <li>
-                    <AiOutlineEye />
-                  </li>
-                  <li>
-                    <AiOutlineShoppingCart />
-                  </li>
-                </ul>
-              </div>
-              <div className="featured__item__text">
-                <h6>
-                  <Link to="">{item.name}</Link>
-                </h6>
-                <h5>{formatter(item.price)}</h5>
-              </div>
-            </div>
+          <div key={j} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <ProductCard name={item.name} price={item.price} img={item.img}/>
           </div>
         );
       });
