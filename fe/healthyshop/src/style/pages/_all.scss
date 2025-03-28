@@ -21,6 +21,29 @@ body {
   //background: map.get($theme-colors,"main");
   margin: auto;
 }
+
+.section-title{
+  margin-bottom: 50px;
+  text-align: center;
+  
+  h2{
+      position: relative;
+  }
+
+  h2:after{
+      position: absolute;
+      left: 0;
+      bottom: -15px;
+      right: 0;
+      height: 4px;
+      width: 80px;
+      background: map.get($theme-colors,"main");
+      content: "";
+      margin: 0 auto;
+  }
+
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -63,7 +86,8 @@ body {
   padding-right: 10px;
 }
 
-input,textarea{
+input,
+textarea {
   width: 100%;
   height: 35px;
   border: 1px solid #ebebeb;
@@ -72,12 +96,12 @@ input,textarea{
   color: #b2b2b2;
   border-radius: 3px;
 
-  &:focus{
+  &:focus {
     outline: none;
   }
 }
 
-textarea{
+textarea {
   padding-top: 10px;
 }
 
