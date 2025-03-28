@@ -71,7 +71,7 @@ const ProductsPage = () => {
       <Breadcrumb name="Danh sách sản phẩm" />
       <div className="container">
         <div className="row">
-          <div className="col-lg-3">
+          <div className="col-lg-3 col-md-12 col-sm-12 ">
             <div className="sidebar">
               <div className="sidebar__item">
                 <h2>Tìm kiếm</h2>
@@ -117,7 +117,7 @@ const ProductsPage = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-9">
+          <div className="col-lg-9 col-md-12 col-sm-12 ">
             <div className="row">
               {products.map((item, key) => (
                 <div key={key} className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
