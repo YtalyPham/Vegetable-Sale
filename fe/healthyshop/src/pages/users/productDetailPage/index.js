@@ -11,8 +11,9 @@ import {
   AiOutlineLinkedin,
 } from "react-icons/ai";
 import { formatter } from "../../../utils/formater";
-import { ProductCard } from "../../../component";
+import { ProductCard,Quantity } from "../../../component";
 import { featproducts } from "../../../utils/common";
+
 const ProductDetailPage = () => {
   const imgs = [c1, c2, c3];
 
@@ -21,7 +22,7 @@ const ProductDetailPage = () => {
       <Breadcrumb name="Chi tiết sản phẩm" />
       <div className="container">
         <div className="row">
-          <div className="col-lg-6 product__detail__pic">
+          <div className="col-lg-6 col-xl-12 col-md-12 col-sm-12 col-xs-12 product__detail__pic">
             <img src={c3} alt="product-pic" />
 
             <div className="main">
@@ -30,7 +31,7 @@ const ProductDetailPage = () => {
               ))}
             </div>
           </div>
-          <div className="col-lg-6 product__detail__text">
+          <div className="col-lg-6 col-xl-12 col-md-12 col-sm-12 col-xs-12 product__detail__text">
             <h2>Rau củ xanh</h2>
             <div className="seen-icon">
               <AiOutlineEye />
@@ -43,6 +44,7 @@ const ProductDetailPage = () => {
               tươi ngon nhất cũng như các loại hoa quả nhập khẩu, hoa quả vùng
               miền khác.
             </p>
+            <Quantity />
             <ul>
               <li>
                 <b>Tình trạng:</b> <span>Còn hàng</span>
