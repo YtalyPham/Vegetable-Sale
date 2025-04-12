@@ -88,7 +88,7 @@ const Header = () => {
         <div className="humberger__menu__cart">
           <ul>
             <li>
-              <Link to={""}>
+              <Link to={ROUTERS.USER.SHOPPING_CART}>
                 <AiOutlineShoppingCart /> <span>1</span>
               </Link>
             </li>
@@ -249,7 +249,7 @@ const Header = () => {
               </div>
               <ul>
                 <li>
-                  <Link to={"#"}>
+                  <Link to={ROUTERS.USER.SHOPPING_CART}>
                     <AiOutlineShoppingCart /> <span>5</span>
                   </Link>
                 </li>
