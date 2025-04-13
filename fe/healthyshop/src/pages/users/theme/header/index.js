@@ -13,7 +13,7 @@ import {
   AiOutlineDownCircle,
   AiOutlineUpCircle,
 } from "react-icons/ai";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { formatter } from "../../../../utils/formater";
 import { ROUTERS } from "../../../../utils/router";
 export const categories = [
@@ -24,6 +24,7 @@ export const categories = [
   "Hải sản",
 ];
 const Header = () => {
+  const navigate = useNavigate();
   const location= useLocation();
   const [isShowHumberger, setisShowHumberger] = useState(false);
   const [isHome, setisHome] = useState(location.pathname.length <= 1);
@@ -204,10 +205,8 @@ const Header = () => {
                     <AiOutlineTwitter />
                   </Link>
                 </li>
-                <li>
-                  <Link to={""}>
-                    <AiOutlineUser />
-                  </Link>
+                <li onClick={() => navigate(ROUTERS.ADMIN.LOGIN)}>
+                  
                   <span>Đăng nhập</span>
                 </li>
               </ul>

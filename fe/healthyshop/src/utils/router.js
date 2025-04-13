@@ -10,6 +10,7 @@ export const ROUTERS={
     },
     ADMIN: {
         LOGIN: `${ADMIN_PATH}/dang-nhap`,
+        ORDERS: `${ADMIN_PATH}/dat-hang`,
        
     },
 }
