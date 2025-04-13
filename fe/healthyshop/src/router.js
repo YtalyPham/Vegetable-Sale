@@ -8,6 +8,7 @@ import ProductDetailPage from "./pages/users/productDetailPage";
 import ShoppingCartPage from "./pages/users/shoppingCartPage";
 import CheckoutPage from "./pages/users/checkoutPage";
 import LoginPage from "./pages/admin/loginPage";
+import OrderAdPage from "./pages/admin/orderPage";
 import MasterAdLayout from "./pages/admin/theme/masterAdLayout";
 const renderUserRouter = () => {
   const userRouters = [
@@ -52,6 +53,10 @@ const renderAdminRouter = () => {
     {
       path: ROUTERS.ADMIN.LOGIN,
       component: <LoginPage />,
+    },
+    {
+      path: ROUTERS.ADMIN.ORDERS,
+      component: <OrderAdPage />,
     },
   ];
   return (
