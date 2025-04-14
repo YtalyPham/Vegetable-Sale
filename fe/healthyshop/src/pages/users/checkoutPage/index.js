@@ -2,7 +2,7 @@ import { memo } from "react";
 
 import Breadcrumb from "../theme/breadcrumb";
 import "./style.scss";
-import { formatter } from "../../../utils/formater";
+import { formatter } from "../../../utils/formatter";
 
 const CheckoutPage = () => {
   return (

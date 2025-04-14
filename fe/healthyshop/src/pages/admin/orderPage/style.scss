@@ -1,7 +1,60 @@
 @use "sass:map";
 @import "style/pages/all";
 
-.container{
-  background: transparent;   
-   
+.orders {
+  background: #fff;
+  border-radius: 8px;
+
+  h2 {
+    margin-bottom: 30px;
+    color: map.get($theme-colors, "normal-text");
+  }
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+
+    th,td {
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 5px;
+  }
+
+  &__page-numbers{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  &__page-btn {
+    height: 36px;
+    min-width: 36px;
+    padding: 0 12px;
+    font-size: 14px;
+    color: map.get($theme-colors, "normal-text");
+    background: #ffffff;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover:not(&--active) {
+      background: map.get($theme-colors, "main");
+      color: #ffffff;
+    }
+
+    &--active {
+      color: #ffffff;
+      background: map.get($theme-colors, "main");
+      border-color: map.get($theme-colors, "main");
+    }
+  }
 }
