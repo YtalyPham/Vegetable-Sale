@@ -8,13 +8,13 @@ const HeaderAd = ({ children, ...props }) => {
   const navigate = useNavigate();
   const navItems = [
     {
-      Path: ROUTERS.ADMIN.ORDERS,
+      path: ROUTERS.ADMIN.ORDERS,
       onClick: () => navigate(ROUTERS.ADMIN.ORDERS),
       label: "Đặt hàng",
       icon: <AiOutlineShoppingCart />,
     },
     {
-      Path: ROUTERS.ADMIN.LOGOUT,
+      path: ROUTERS.ADMIN.LOGOUT,
       onClick: () => {},
       label: "Đăng xuất",
       icon: <AiOutlineLogout />,
