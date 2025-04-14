@@ -10,7 +10,7 @@ import {
   AiOutlineFacebook,
   AiOutlineLinkedin,
 } from "react-icons/ai";
-import { formatter } from "../../../utils/formater";
+import { formatter } from "../../../utils/formatter";
 import { ProductCard,Quantity } from "../../../component";
 import { featproducts } from "../../../utils/common";
 

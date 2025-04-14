@@ -1,5 +1,5 @@
 import { generatePath, Link } from "react-router-dom";
-import { formatter } from "../../utils/formater";
+import { formatter } from "../../utils/formatter";
 import { AiOutlineEye, AiOutlineShoppingCart } from "react-icons/ai";
 import { memo } from "react";
 import "./style.scss";

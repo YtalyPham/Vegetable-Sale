@@ -14,7 +14,7 @@ import {
   AiOutlineUpCircle,
 } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { formatter } from "../../../../utils/formater";
+import { formatter } from "../../../../utils/formatter";
 import { ROUTERS } from "../../../../utils/router";
 export const categories = [
   "Thịt tươi",

@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { formatter } from "../../../utils/formater";
+import { formatter } from "../../../utils/formatter";
 import Breadcrumb from "../theme/breadcrumb";
 import "./style.scss";
 import { Quantity } from "../../../component";
