@@ -16,7 +16,8 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { formatter } from "../../../../utils/formatter";
 import { ROUTERS } from "../../../../utils/router";
-export const categories = [
+import {useGetCategoriesUS} from "../../../../api/homePage";
+export const categoriestatic = [
   "Thịt tươi",
   "Rau củ",
   "Nước trái cây",
@@ -66,6 +67,8 @@ const Header = () => {
       path: "",
     },
   ]);
+
+  const { data: categories } = useGetCategoriesUS();
  
   useEffect(()=>{
     const isHome = location.pathname.length <= 1;
@@ -272,9 +275,9 @@ const Header = () => {
             </div>
             {isShowCategories && (
               <ul className={isShowCategories ? "" : "hidden"}>
-                {categories.map((categories, key) => (
+                {categories?.map((category, key) => (
                   <li key={key}>
-                    <Link to={ROUTERS.USER.PRODUCTS}>{categories}</Link>
+                    <Link to={ROUTERS.USER.PRODUCTS}>{category.name}</Link>
                   </li>
                 ))}
               </ul>
