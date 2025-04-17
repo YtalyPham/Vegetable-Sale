@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fontsource/be-vietnam-pro": "^5.2.5",
+    "@tanstack/react-query": "^5.74.3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
@@ -42,5 +43,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  } 
 }
