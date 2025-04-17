@@ -2,7 +2,6 @@ import { memo } from "react";
 import "./style.scss";
 import Breadcrumb from "../theme/breadcrumb";
 import { Link } from "react-router-dom";
-import { categories } from "../theme/header";
 import { ROUTERS } from "../../../utils/router";
 import f1 from "assets/users/images/featured/f1.jpg";
 import f2 from "assets/users/images/featured/f2.jpg";
@@ -13,6 +12,8 @@ import f6 from "assets/users/images/featured/f6.jpg";
 import f7 from "assets/users/images/featured/f7.jpg";
 import f8 from "assets/users/images/featured/f8.jpg";
 import { ProductCard } from "../../../component";
+import { useGetCategoriesUS } from "../../../api/homePage";
+
 const ProductsPage = () => {
   const sorts = [
     "Giá thấp đến cao",
@@ -65,7 +66,7 @@ const ProductsPage = () => {
       price: "53000",
     },
   ];
-
+const { data: categories } = useGetCategoriesUS();
   return (
     <>
       <Breadcrumb name="Danh sách sản phẩm" />
@@ -107,9 +108,9 @@ const ProductsPage = () => {
                 <h2>Thể loại khác</h2>
                 <ul>
                   <div className="tags">
-                    {categories.map((name, key) => (
+                    {categories.map((category, key) => (
                       <li key={key}>
-                        <Link to={ROUTERS.USER.PRODUCTS}>{name}</Link>
+                        <Link to={ROUTERS.USER.PRODUCTS}>{category.name}</Link>
                       </li>
                     ))}
                   </div>

@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
     baseURL,
     timeout,
 });
-
+console.log("Base URL:", baseURL);
 axiosInstance.interceptors.request.use(
     function(config) {
         config.headers["Content-Type"] = "application/json"; 

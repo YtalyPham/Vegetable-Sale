@@ -16,7 +16,7 @@ import "./style.scss";
 
 import {ProductCard} from "../../../component";
 import { featproducts } from "../../../utils/common";
-import { useGetCategoriesUS } from "api/homePage";
+ 
 
 const HomePages = () => {
   const responsive = {
@@ -60,10 +60,6 @@ const HomePages = () => {
       name: "Thịt bò",
     },
   ];
-
-  // const { data: categories} = useGetCategoriesUS();
-
-  // console.log("categories ",categories);
  
   const renderFeaturedProducts = (data) => {
     const tabList = [];

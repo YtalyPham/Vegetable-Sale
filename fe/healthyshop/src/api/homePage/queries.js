@@ -4,7 +4,7 @@ import { optionsUseQuery} from "../../utils/common";
 export const useGetCategoriesUS = (option) => {
     return useQuery({
         queryKey: ['GetCategoriesAPI'],
-        queryFn: getCategoriesAPI(),
+        queryFn: () => getCategoriesAPI(),
         optionsUseQuery,
         ...option,
        
