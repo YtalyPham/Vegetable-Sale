@@ -16,7 +16,7 @@ import "./style.scss";
 
 import {ProductCard} from "../../../component";
 import { featproducts } from "../../../utils/common";
- 
+import { useGetCategoriesUS, useGetProductsUS } from "api/homePage";
 
 const HomePages = () => {
   const responsive = {
@@ -60,22 +60,30 @@ const HomePages = () => {
       name: "Thịt bò",
     },
   ];
- 
-  const renderFeaturedProducts = (data) => {
+  const { data: categories } = useGetCategoriesUS();
+  const { data: products } = useGetProductsUS();
+
+  console.log("categories", categories);
+  console.log("products", products);
+  const renderFeaturedProducts = () => {
     const tabList = [];
     const tabPanels = [];
 
-    Object.keys(data).forEach((key, index) => {
-      tabList.push(<Tab key={index}>{data[key].title}</Tab>);
-      const tabPanel = [];
-      data[key].products.forEach((item, j) => {
-        tabPanel.push(
-          <div key={j} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <ProductCard name={item.name} price={item.price} img={item.img}/>
-          </div>
-        );
-      });
-      tabPanels.push(tabPanel);
+    tabList.push(categories?.map((category)=>{
+      return <Tab key={category.id}>{category.name}</Tab>
+    }))
+
+
+    categories?.forEach((category) =>{
+      tabPanels.push(
+        products?.filter((product)=> product.category_id === category.id)
+      .map((product)=>(
+        <div key={product.id} 
+        className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <ProductCard product={product}/>
+        </div>
+      )));
+      
     });
 
     return (
@@ -115,7 +123,7 @@ const HomePages = () => {
           <div className="section-title">
             <h2>Sản phẩm nổi bật</h2>
           </div>
-          {renderFeaturedProducts(featproducts)}
+          {renderFeaturedProducts()}
         </div>
       </div>
       {/*Featured End */}
