@@ -15,7 +15,6 @@ import "./style.scss";
 
 
 import {ProductCard} from "../../../component";
-import { featproducts } from "../../../utils/common";
 import { useGetCategoriesUS, useGetProductsUS } from "api/homePage";
 
 const HomePages = () => {
@@ -40,22 +39,27 @@ const HomePages = () => {
   };
   const sliderItems = [
     {
+      id: 1,
       bgImga: c1,
       name: "Cam tươi",
     },
     {
+      id: 2,
       bgImga: c2,
       name: "Hoa quả khô",
     },
     {
+      id: 3,
       bgImga: c3,
       name: "Rau củ tươi",
     },
     {
+      id: 4,
       bgImga: c4,
       name: "Sữa hộp",
     },
     {
+      id: 5,
       bgImga: c5,
       name: "Thịt bò",
     },
@@ -63,8 +67,7 @@ const HomePages = () => {
   const { data: categories } = useGetCategoriesUS();
   const { data: products } = useGetProductsUS();
 
-  console.log("categories", categories);
-  console.log("products", products);
+   
   const renderFeaturedProducts = () => {
     const tabList = [];
     const tabPanels = [];

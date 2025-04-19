@@ -26,41 +26,49 @@ const ProductsPage = () => {
 
   const products = [
     {
+      id: 1,
       img: f1,
       name: "Thịt bò nạt",
       price: "20000",
     },
     {
+      id: 2,
       img: f2,
       name: "Chuối",
       price: "17800",
     },
     {
+      id: 3,
       img: f3,
       name: "Ổi",
       price: "25000",
     },
     {
+      id: 4,
       img: f4,
       name: "Dưa hấu",
       price: "44000",
     },
     {
+      id: 5,
       img: f5,
       name: "Nho tím",
       price: "120000",
     },
     {
+      id: 6,
       img: f6,
       name: "Hamburger",
       price: "86000",
     },
     {
+      id: 7,
       img: f7,
       name: "Xoài",
       price: "69000",
     },
     {
+      id: 8,
       img: f8,
       name: "Táo Úc",
       price: "53000",
@@ -108,7 +116,7 @@ const { data: categories } = useGetCategoriesUS();
                 <h2>Thể loại khác</h2>
                 <ul>
                   <div className="tags">
-                    {categories.map((category, key) => (
+                    {categories?.map((category, key) => (
                       <li key={key}>
                         <Link to={ROUTERS.USER.PRODUCTS}>{category.name}</Link>
                       </li>
@@ -120,12 +128,10 @@ const { data: categories } = useGetCategoriesUS();
           </div>
           <div className="col-lg-9 col-md-12 col-sm-12 ">
             <div className="row">
-              {products.map((item, key) => (
+              {products?.map((item, key) => (
                 <div key={key} className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <ProductCard
-                    name={item.name}
-                    price={item.price}
-                    img={item.img}
+                    product={item}
                   />
                 </div>
               ))}
