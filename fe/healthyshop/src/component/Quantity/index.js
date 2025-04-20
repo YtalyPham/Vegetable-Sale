@@ -1,9 +1,11 @@
- 
- 
 import { memo } from "react";
 import "./style.scss";
- 
-const Quantity = ({ hasAddToCart = true }) => {
+import useShoppingCart from "hooks/useShoppingCart";
+import { SESSION_KEY } from "utils/constant";
+import { ReactSession } from "react-client-session";
+const Quantity = ({ hasAddToCart = true, product }) => {
+  const { addToCart } = useShoppingCart();
+
   return (
     <>
       <div className="quantity-container">
@@ -13,7 +15,15 @@ const Quantity = ({ hasAddToCart = true }) => {
           <span className="qtybtn">+</span>
         </div>
         {hasAddToCart && (
-          <button type="submit" className="button-submit">
+          <button
+            type="button"
+            className="button-submit"
+            onClick={() => {
+              addToCart(product, 1);
+              const curCart = ReactSession.get(SESSION_KEY.CART);
+              console.log(curCart);
+            }}
+          >
             Thêm giỏ hàng
           </button>
         )}

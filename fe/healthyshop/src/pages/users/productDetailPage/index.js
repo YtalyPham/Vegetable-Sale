@@ -45,7 +45,7 @@ const ProductDetailPage = () => {
               <p>
                 {product.sort_description}
               </p>
-              <Quantity />
+              <Quantity product={product} />
               <ul>
                 <li>
                   <b>Tình trạng:</b> <span>Còn hàng</span>
