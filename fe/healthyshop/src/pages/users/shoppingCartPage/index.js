@@ -7,9 +7,13 @@ import { AiOutlineClose } from "react-icons/ai";
 import c1 from "assets/users/images/categories/c1.jpg";
 import { ROUTERS } from "../../../utils/router";
 import { useNavigate } from "react-router-dom";
-
+import { SESSION_KEY } from "utils/constant";
+import {ReactSession} from 'react-client-session';
 const ShoppingCartPage = () => {
   const navigate = useNavigate();
+  const curCart = ReactSession.get(SESSION_KEY.CART);
+  
+  console.log("Gio hang: ",curCart)
   return (
     <>
       <Breadcrumb name="Giỏ hàng" />
