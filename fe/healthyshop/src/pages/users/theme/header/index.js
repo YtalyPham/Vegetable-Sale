@@ -291,7 +291,7 @@ const Header = () => {
                     type="text"
                     placeholder="Bạn đang tìm gì ?"
                     name=""
-                    value=""
+                    defaultValue=""
                   />
                   <button type="submit">Tìm kiếm</button>
                 </form>

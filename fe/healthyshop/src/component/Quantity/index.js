@@ -3,24 +3,17 @@ import "./style.scss";
 import useShoppingCart from "hooks/useShoppingCart";
 import { SESSION_KEY } from "utils/constant";
 import { ReactSession } from "react-client-session";
-const Quantity = ({ hasAddToCart = true, product }) => {
+const Quantity = ({ hasAddToCart = true, product, initQuantity }) => {
   const { addToCart } = useShoppingCart();
-  const [quantity,setQuantity] = useState(1);
-  //const curCart = ReactSession.get(SESSION_KEY.CART);
+  const [quantity,setQuantity] = useState(initQuantity || 1);
+ 
   const incrementQuantity = (isPlus) =>{
     if(!isPlus && quantity === 0){
       return;
     }
     setQuantity(isPlus ? quantity + 1 : quantity - 1);
   }
-  // Safely retrieve with optional chaining and default value
-  // const storedCart = JSON.parse(sessionStorage.getItem('__react_session__')) || {};
-  // const totalQuantity = storedCart.cart?.totalQuantity || 0;
-
-  // console.log("QuanTotal: ",totalQuantity); 
-
-  // const firstProductQuantity = storedCart.cart.products[0]?.quantity||0;
-  // console.log("QuantPerPro: ",firstProductQuantity);
+  
   
   return (
     <>
