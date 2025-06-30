@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { formatter } from "../../../utils/formatter";
 import Breadcrumb from "../theme/breadcrumb";
 import "./style.scss";
@@ -8,12 +8,11 @@ import c1 from "assets/users/images/categories/c1.jpg";
 import { ROUTERS } from "../../../utils/router";
 import { useNavigate } from "react-router-dom";
 import { SESSION_KEY } from "utils/constant";
-import {ReactSession} from 'react-client-session';
+import { ReactSession } from "react-client-session";
 const ShoppingCartPage = () => {
   const navigate = useNavigate();
-  const curCart = ReactSession.get(SESSION_KEY.CART);
-  
-  console.log("Gio hang: ",curCart)
+  const [cart, setCart] = useState(ReactSession.get(SESSION_KEY.CART));
+
   return (
     <>
       <Breadcrumb name="Giỏ hàng" />
@@ -31,20 +30,24 @@ const ShoppingCartPage = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="shopping__cart__item">
-                  <img src={c1} alt="product-pic" />
-                </td>
-                <td>Tên sản phẩm 1</td>
-                <td>{formatter(200000)}</td>
-                <td>
-                  <Quantity quantity="2" hasAddToCart={false} />
-                </td>
-                <td>{formatter(400000)}</td>
-                <td className="icon__close">
-                  <AiOutlineClose />
-                </td>
-              </tr>
+              {cart?.products.map(({product, quantity},key) => (
+                <tr key={key}>
+                  <td className="shopping__cart__item">
+                    <img src={product.img} alt="product-pic" />
+                  </td>
+                  <td>{product.name}</td>
+                  <td>{formatter(product.price)}</td>
+                  <td>
+                    <Quantity initQuantity={quantity} hasAddToCart={false} />
+                  </td>
+                  <td>{formatter(product.price * quantity)}</td>
+                  <td className="icon__close" onClick={() => {
+                    console.log(product.id)
+                  }}>
+                    <AiOutlineClose />
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -74,9 +77,8 @@ const ShoppingCartPage = () => {
               <button
                 className="button-submit"
                 type="button"
-                onClick={() => 
-                  navigate(ROUTERS.USER.CHECKOUT)
-                }>
+                onClick={() => navigate(ROUTERS.USER.CHECKOUT)}
+              >
                 Thanh toán
               </button>
             </div>
