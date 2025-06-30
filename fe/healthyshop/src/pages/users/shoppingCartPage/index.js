@@ -4,19 +4,22 @@ import Breadcrumb from "../theme/breadcrumb";
 import "./style.scss";
 import { Quantity } from "../../../component";
 import { AiOutlineClose } from "react-icons/ai";
-import c1 from "assets/users/images/categories/c1.jpg";
+ 
 import { ROUTERS } from "../../../utils/router";
 import { useNavigate } from "react-router-dom";
 import { SESSION_KEY } from "utils/constant";
 import { ReactSession } from "react-client-session";
+import useShoppingCart from "hooks/useShoppingCart";
 const ShoppingCartPage = () => {
   const navigate = useNavigate();
   const [cart, setCart] = useState(ReactSession.get(SESSION_KEY.CART));
+  const {removeCart} = useShoppingCart();
 
   return (
     <>
       <Breadcrumb name="Giỏ hàng" />
-      <div className="container">
+      {
+        cart && <div className="container">
         <div className="table__cart">
           <table>
             <thead>
@@ -41,9 +44,7 @@ const ShoppingCartPage = () => {
                     <Quantity initQuantity={quantity} hasAddToCart={false} />
                   </td>
                   <td>{formatter(product.price * quantity)}</td>
-                  <td className="icon__close" onClick={() => {
-                    console.log(product.id)
-                  }}>
+                  <td className="icon__close" onClick={() => setCart(removeCart(product.id))}>
                     <AiOutlineClose />
                   </td>
                 </tr>
@@ -68,10 +69,10 @@ const ShoppingCartPage = () => {
               <h2>Tổng đơn :</h2>
               <ul>
                 <li>
-                  Số lượng: <span>{2}</span>
+                  Số lượng: <span>{cart.totalQuantity}</span>
                 </li>
                 <li>
-                  Thành tiền: <span>{formatter(200000)}</span>
+                  Thành tiền: <span>{formatter(cart.totalPrice)}</span>
                 </li>
               </ul>
               <button
@@ -85,6 +86,8 @@ const ShoppingCartPage = () => {
           </div>
         </div>
       </div>
+      }
+     
     </>
   );
 };
