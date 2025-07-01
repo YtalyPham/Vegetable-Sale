@@ -1,7 +1,10 @@
 import { ReactSession } from "react-client-session";
+import { useDispatch } from "react-redux";
 import { SESSION_KEY } from "utils/constant";
+import { setCart } from "../redux/commonSlide";
 
 const useShoppingCart = () => {
+  const dispatch = useDispatch();
   const addToCart = (product, quantity) => {
     const cart = ReactSession.get(SESSION_KEY.CART);
     const products = cart ? cart.products : [];
@@ -25,6 +28,7 @@ const useShoppingCart = () => {
     };
     ReactSession.set(SESSION_KEY.CART, newCart);
     alert("Thêm sản phẩm vào giỏ hàng thành công!");
+    dispatch(setCart(newCart));
   };
   const removeCart = (id) => {
     const cart = ReactSession.get(SESSION_KEY.CART);
@@ -44,6 +48,7 @@ const useShoppingCart = () => {
       };
 
       ReactSession.set(SESSION_KEY.CART, newCart);
+      dispatch(setCart(newCart));
       return newCart;
     }
 
